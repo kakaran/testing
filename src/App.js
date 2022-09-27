@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import "./App.css"
 function App() {
 
   const [datas, setDatas] = useState([]);
@@ -30,13 +31,11 @@ function App() {
         </tr>
         {datas.map((value,index)=>{
           return(
-            <div>
               <tr>
                 <td>{index+1}</td>
                 <td>{value.fields.Name}</td>
                 <td>{value.fields.Age}</td>
               </tr>
-            </div>
           )
         })}
         
