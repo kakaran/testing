@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
 function App() {
 
+  const [data , setData] = useState([{}]);
   useEffect(()=>{
-    
     async function infohandler()
     {
-      await axios.get("https://6aa5-112-196-153-10.ngrok.io/students/").then((res)=>{
+      await axios.get("https://studentdb.pythonanywhere.com/students/",{}).then((res)=>{
         console.log(res);
+        setData(res.data);
+        console.log(data);
       }).catch((err)=>{
         console.log(err);
       })
