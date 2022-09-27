@@ -2,50 +2,45 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 function App() {
 
-  const [data , setData] = useState([{}]);
+  const [datas, setDatas] = useState([]);
   useEffect(()=>{
-    // async function infohandler()
-    // {
-    //   // await axios.get("https://studentdb.pythonanywhere.com/students/",{}).then((res)=>{
-    //   //   console.log(res);
-    //   //   setData(res.data);
-    //   //   console.log(data);
-    //   // }).catch((err)=>{
-    //   //   console.log(err);
-    //   // })
-    //   fetch(
-    //     "https://studentdb.pythonanywhere.com/students/")
-    //                 .then((res) => res.json())
-    //                 .then((json) => {
-    //                     this.setState({
-    //                         items: json,
-    //                         DataisLoaded: true
-    //                     });
-    //                 })
-        
-    // }
-    // infohandler()
-    const url = "https://6aa5-112-196-153-10.ngrok.io/students/";
-
-    const fetchData = async () => {
+    async function infohandler()
+    {
       try {
-        const response = await fetch(url);
-        const json = await response.json();
-        console.log(json);
+        const result =  (await axios.get("https://studentdb.pythonanywhere.com/students/",[])).data
+        console.log(result[0].fields.Name);
+        setDatas(result);
       } catch (error) {
-        console.log("error", error);
+        console.log(error);
       }
-    };
-
-    fetchData();
+    }
+    infohandler();
   },[])
  
-
   // let LocalTiming = new Date().toLocaleTimeString();
   // let LocalDateing = new Date().toLocaleDateString();
   return (
     <>
       <h1 className="App">Hello My name is karan kapoor 2</h1>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>AGE</th>
+        </tr>
+        {datas.map((value,index)=>{
+          return(
+            <div>
+              <tr>
+                <td>{index+1}</td>
+                <td>{value.fields.Name}</td>
+                <td>{value.fields.Age}</td>
+              </tr>
+            </div>
+          )
+        })}
+        
+      </table>
     </>
   );}
 
