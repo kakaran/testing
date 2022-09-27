@@ -4,6 +4,8 @@ import "./App.css"
 function App() {
 
   const [datas, setDatas] = useState([]);
+  const [name, setName] =useState();
+  const [age, setAge] =useState();
   useEffect(()=>{
     async function infohandler()
     {
@@ -17,6 +19,21 @@ function App() {
     }
     infohandler();
   },[])
+
+  const data2={
+    name,
+    age
+    }
+console.log(typeof age);
+  const onhandleSubmit = async ()=>{
+    try {
+      const data = await axios.post("https://studentdb.pythonanywhere.com/savestudent/",new URLSearchParams(data2))
+    console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
  
   // let LocalTiming = new Date().toLocaleTimeString();
   // let LocalDateing = new Date().toLocaleDateString();
@@ -40,6 +57,21 @@ function App() {
         })}
         
       </table>
+
+      <h1>Add the Name and Age</h1>
+      <div className="formContainer">
+        <label htmlFor="Name">Name</label>
+        <input type="text"  id="Name" placeholder="Name" onChange={(e)=>{
+          setName(e.target.value);
+        }}/>
+        <label htmlFor="Age">Age</label>
+        <input type="text"  id="Age" placeholder="Age"onChange={(e)=>{
+          setAge(parseInt(e.target.value));
+        }}/>
+        <button onClick={()=>{
+          onhandleSubmit();
+        }}>Submit</button>
+      </div>
     </>
   );}
 

@@ -17,3 +17,37 @@ td{
   text-align: center;
   background-color: gray;
 }
+
+.formContainer
+{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: auto;
+}
+
+label{
+  padding: 10px 3px ;
+}
+
+input{
+  padding: 10px ;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 10px ;
+  margin-bottom: 10px;
+}
+
+input::placeholder{
+  color: white;
+}
+
+button{
+  width: 200px ;
+margin: auto;
+padding: 10px 7px;
+background-color: aqua;
+border-radius: 20px;
+border: none;
+}
