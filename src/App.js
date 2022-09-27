@@ -22,7 +22,7 @@ function App() {
   // let LocalDateing = new Date().toLocaleDateString();
   return (
     <>
-      <h1 className="App">Hello My name is karan kapoor 2</h1>
+      <h1 className="App">Made by Tushar and Karan</h1>
       <table>
         <tr>
           <th>ID</th>
