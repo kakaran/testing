@@ -6,7 +6,7 @@ function App() {
     
     async function infohandler()
     {
-      await axios.get("http://07b3-112-196-153-10.ngrok.io/students/").then((res)=>{
+      await axios.get("https://07b3-112-196-153-10.ngrok.io/students/").then((res)=>{
         console.log(res);
       }).catch((err)=>{
         console.log(err);
